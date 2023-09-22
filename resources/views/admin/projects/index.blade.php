@@ -56,8 +56,38 @@
                                 {{ $project->project_status }}
                             </td>
                             <td>
-                                {{ $project->languages }}
-                            </td>
+                                @foreach ($project->technologies as $technology)
+                                    @if ($technology->name === 'PHP')
+                                        <span class="badge rounded-pill text-bg-primary">
+                                            {{ $technology->name }}
+                                        </span>
+                                    @elseif ($technology->name === 'JavaScript')
+                                        <span class="badge rounded-pill text-bg-warning">
+                                            {{ $technology->name }}
+                                        </span>
+                                    @elseif ($technology->name === 'html')
+                                        <span class="badge rounded-pill text-bg-light">
+                                            {{ $technology->name }}
+                                        </span>
+                                    @elseif ($technology->name === 'CSS')
+                                        <span class="badge rounded-pill text-bg-danger">
+                                            {{ $technology->name }}
+                                        </span>
+                                    @elseif ($technology->name === 'Bootstrap')
+                                        <span class="badge rounded-pill text-bg-secondary">
+                                            {{ $technology->name }}
+                                        </span>
+                                    @elseif ($technology->name === 'Vue js')
+                                        <span class="badge rounded-pill text-bg-success">
+                                            {{ $technology->name }}
+                                        </span>
+                                    @elseif ($technology->name === 'Laravel')
+                                        <span class="badge rounded-pill text-bg-info">
+                                            {{ $technology->name }}
+                                        </span>
+                                    @endif
+                                @endforeach
+                            </td>                            
                             <td>
                                 <a href="{{ $project->project_link }}" target="_blank">
                                     {{ $project->project_link }}

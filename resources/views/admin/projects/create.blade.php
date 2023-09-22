@@ -83,15 +83,6 @@
                             </div>
                         @enderror
                       </div>
-                      <div class="form-floating">
-                        <input type="text" class="form-control" name="languages" id="floatingInput" value="{{ old('languages') }}">
-                        <label for="floatingInput">Languages<span class="text-danger">*</span></label>
-                        @error('languages')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
                     <div class="form-floating mt-3">
                         <input type="text" class="form-control" name="project_link" id="floatingInput" value="{{ old('project_link') }}">
                         <label for="floatingInput">Project Link<span class="text-danger">*</span></label>

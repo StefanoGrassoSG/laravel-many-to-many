@@ -23,8 +23,9 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.index', compact('projects'));
+        return view('admin.projects.index', compact('projects', 'technologies'));
     }
 
     /**
@@ -52,16 +53,18 @@ class ProjectController extends Controller
             'start_date' => $formdata['start_date'],
             'end_date' => $formdata['end_date'],
             'project_status' => $formdata['project_status'],
-            'languages' => $formdata['languages'],
             'project_link' => $formdata['project_link'],
             'type_id' => $formdata['type_id']
        ]);
 
-       foreach ($formdata['technologies'] as $technologyId) {
+       if(isset($formdata['technologies'])) {
+        foreach ($formdata['technologies'] as $technologyId) {
             $project->technologies()->attach($technologyId);
        }
+    }
+       
 
-       return redirect()->route('admin.projects.index', compact('project'));
+       return redirect()->route('admin.projects.show', compact('project'));
     }
 
     /**
@@ -78,8 +81,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {   
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.edit', compact('project', 'types'));
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -96,10 +100,16 @@ class ProjectController extends Controller
             'start_date' => $formData['start_date'],
             'end_date' => $formData['end_date'],
             'project_status' => $formData['project_status'],
-            'languages' => $formData['languages'],
             'project_link' => $formData['project_link'],
             'type_id' => $formData['type_id']
         ]);
+
+        if(isset($formData['technologies'])) {
+            $project->technologies()->sync($formData['technologies']);
+        }
+        else {
+            $project->technologies()->detach();
+        }
 
         return redirect()->route('admin.projects.show', compact('project'));
     }

@@ -8,7 +8,7 @@
             <h2 class="fw-bold">
                 Edit Your Project
             </h2>
-            <form action="{{ route('admin.projects.update', ['project' => $project->id]) }}" method="POST" class="d-flex justify-content-center mt-5 mb-3">
+            <form action="{{ route('admin.projects.update', ['project' => $project->id]) }}" method="POST" class="d-flex justify-content-center border p-5 border-primary-subtle bg-info-subtle mt-5 mb-3">
                 @csrf
                 @method('PUT')
 
@@ -49,6 +49,30 @@
                             </div>
                         @enderror
                     </div>
+
+                    <div class="mt-3">
+                        <label class="form-label d-block fw-bold fs-3">Technologies</label>
+                        @foreach ($technologies as $technology)
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="technologies[]" id="{{ $technology->id }}" value="{{ $technology->id }}"
+                                @if($errors->any())
+                                    @if (in_array($technology->id, old('technologies', [])))
+                                        checked
+                                    @endif
+                                @elseif($project->technologies->contains($technology))
+                                    checked
+                                @endif
+                                >
+                                <label class="form-check-label" for="{{ $technology->id }}">{{ $technology->name }}</label>
+                            </div>
+                        @endforeach 
+                        @error('technologies[]')
+                            <div class="alert alert-danger mt-2">
+                                {{ $message }}
+                            </div>
+                        @enderror 
+                    </div>
+
                     <div>
                         <button type="submit" class="btn btn-warning mt-3">
                             Edit
@@ -60,15 +84,6 @@
                         <input type="text" class="form-control" name="project_status" id="floatingInput" value="{{ old('name', $project->project_status) }}">
                         <label for="floatingInput">Project Status<span class="text-danger">*</span></label>
                         @error('project_status')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                      </div>
-                      <div class="form-floating">
-                        <input type="text" class="form-control" name="languages" id="floatingInput" value="{{ old('name', $project->languages) }}">
-                        <label for="floatingInput">Languages<span class="text-danger">*</span></label>
-                        @error('languages')
                             <div class="alert alert-danger mt-2">
                                 {{ $message }}
                             </div>

@@ -12,7 +12,7 @@
                 @csrf
                 <div class="w-50 me-2">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="name" id="floatingInput">
+                        <input type="text" class="form-control" name="name" id="floatingInput" value="{{ old('name') }}">
                         <label for="floatingInput">Name<span class="text-danger">*</span></label>
                         @error('name')
                             <div class="alert alert-danger mt-2">
