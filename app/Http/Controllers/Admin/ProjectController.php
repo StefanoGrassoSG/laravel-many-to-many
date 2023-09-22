@@ -57,7 +57,11 @@ class ProjectController extends Controller
             'type_id' => $formdata['type_id']
        ]);
 
-       return redirect()->route('admin.projects.index');
+       foreach ($formdata['technologies'] as $technologyId) {
+            $project->technologies()->attach($technologyId);
+       }
+
+       return redirect()->route('admin.projects.index', compact('project'));
     }
 
     /**
