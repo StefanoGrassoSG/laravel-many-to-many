@@ -8,7 +8,7 @@
             <h2 class="fw-bold">
                 Insert New Technology Data
             </h2>
-            <form action="{{ route('admin.technologies.store') }}" method="POST" class="mt-5 mb-3">
+            <form action="{{ route('admin.technologies.store') }}" method="POST" class="bg-info-subtle p-5 border border-primary-subtle mt-5 mb-3">
                 @csrf
                 <div class="w-50 me-2">
                     <div class="form-floating mb-3">

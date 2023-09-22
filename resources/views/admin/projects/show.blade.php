@@ -37,7 +37,16 @@
                     <span class="fw-bold">PROJECT STATUS:</span> <span>{{ $project->project_status }}</span>
                 </div>
                 <div class="mb-1">
-                    <span class="fw-bold">LANGUAGES:</span> <span>{{ $project->languages }}</span>
+                    <span class="fw-bold">TECHNOLOGIES:</span> 
+                    @if ($project->technologies->isEmpty())
+                    -
+                    @else
+                    @foreach ($project->technologies as $technology)
+                        <span class="badge rounded-pill text-bg-primary">
+                            {{ $technology->name }}
+                        </span>
+                    @endforeach
+                @endif
                 </div>
                 <div class="mb-1">
                     <span class="fw-bold">PROJECT LINK:</span> <span><a href="{{ $project->project_link  }}">{{ $project->project_link }}</a></span>

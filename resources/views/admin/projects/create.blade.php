@@ -8,7 +8,7 @@
             <h2 class="fw-bold">
                 Insert New Project Data
             </h2>
-            <form action="{{ route('admin.projects.store') }}" method="POST" class="d-flex justify-content-center mt-5 mb-3">
+            <form action="{{ route('admin.projects.store') }}" method="POST" class="d-flex justify-content-center mt-5 mb-3 p-5 border border-primary-subtle bg-info-subtle">
                 @csrf
                 <div class="w-50 me-2">
                     <div class="form-floating mb-3">
@@ -47,6 +47,17 @@
                             </div>
                         @enderror
                     </div>
+
+                    <div class="mt-3">
+                        <label class="form-label d-block fw-bold fs-3">Technologies</label>
+                        @foreach ($technologies as $technology)
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="technologies[]" id="{{ $technology->id }}" value="{{ $technology->id }}">
+                                <label class="form-check-label" for="{{ $technology->id }}">{{ $technology->name }}</label>
+                            </div>
+                        @endforeach  
+                    </div>
+                   
                     <div>
                         <button type="submit" class="btn btn-success mt-3">
                             Save
