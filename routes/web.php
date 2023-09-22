@@ -8,6 +8,8 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\Admin\PrivateController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Admin\TechnologyController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,7 @@ Route::prefix('admin')
     ->group(function () {
     Route::resource('projects', ProjectController::class);
     Route::resource('types', TypeController::class);
+    Route::resource('technologies', TechnologyController::class);
     Route::get('/dashboard', [PrivateController::class, 'dashboard'])->name('dashboard');
 });
 

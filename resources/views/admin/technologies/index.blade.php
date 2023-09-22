@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('page-title', 'Type table')
+@section('page-title', 'Technologies table')
 
 @section('main-content')
     <div class="row d-flex">
         <div class="col">
-            <a href="{{ route('admin.types.create')}}" class="btn btn-success mb-3">
-                +Add New Type
+            <a href="{{ route('admin.technologies.create')}}" class="btn btn-success mb-3">
+                +Add New Technology
             </a>
             <table class="table table-dark table-striped">
                 <thead>
@@ -18,25 +18,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($types as $type)
+                    @foreach ($technologies as $technology)
                         <tr>
                             <td>
-                                {{ $type->id }}
+                                {{ $technology->id }}
                             </td>
                             <td>
-                                {{ $type->name }}
+                                {{ $technology->name }}
                             </td>
                             <td>
-                                {{ $type->slug }}
+                                {{ $technology->slug }}
                             </td>
                             <td class="small-td"> 
-                                <a href="{{ route('admin.types.show', ['type' => $type->id]) }}" class="w-100 btn btn-primary">
+                                <a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}" class="w-100 btn btn-primary">
                                     View
                                 </a>
-                                <a href="{{ route('admin.types.edit', ['type' => $type->id]) }}" class="w-100 btn btn-warning my-2">
+                                <a href="{{ route('admin.technologies.edit', ['technology' => $technology->id]) }}" class="w-100 btn btn-warning my-2">
                                     Edit
                                 </a>
-                                <form class="w-100" action="{{ route('admin.types.destroy', ['type' => $type->id]) }}" method="post" onsubmit="return confirm('Are you sure?');">
+                                <form class="w-100" action="{{ route('admin.technologies.destroy', ['technology' => $technology->id]) }}" method="post" onsubmit="return confirm('Are you sure?');">
                                     @csrf
                                     @method('DELETE')
 
