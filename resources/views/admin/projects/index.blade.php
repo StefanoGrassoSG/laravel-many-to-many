@@ -59,31 +59,45 @@
                                 @foreach ($project->technologies as $technology)
                                     @if ($technology->name === 'PHP')
                                         <span class="badge rounded-pill text-bg-primary">
-                                            {{ $technology->name }}
+                                            <a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}" class="text-white text-decoration-none">
+                                                {{ $technology->name }}
+                                            </a>
                                         </span>
                                     @elseif ($technology->name === 'JavaScript')
                                         <span class="badge rounded-pill text-bg-warning">
-                                            {{ $technology->name }}
+                                            <a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}" class="text-black text-decoration-none">
+                                                {{ $technology->name }}
+                                            </a>
                                         </span>
                                     @elseif ($technology->name === 'html')
                                         <span class="badge rounded-pill text-bg-light">
-                                            {{ $technology->name }}
+                                            <a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}" class="text-white text-decoration-none">
+                                                {{ $technology->name }}
+                                            </a>
                                         </span>
                                     @elseif ($technology->name === 'CSS')
                                         <span class="badge rounded-pill text-bg-danger">
-                                            {{ $technology->name }}
+                                            <a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}" class="text-white text-decoration-none">
+                                                {{ $technology->name }}
+                                            </a>
                                         </span>
                                     @elseif ($technology->name === 'Bootstrap')
                                         <span class="badge rounded-pill text-bg-secondary">
-                                            {{ $technology->name }}
+                                            <a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}" class="text-white text-decoration-none">
+                                                {{ $technology->name }}
+                                            </a>
                                         </span>
                                     @elseif ($technology->name === 'Vue js')
                                         <span class="badge rounded-pill text-bg-success">
-                                            {{ $technology->name }}
+                                            <a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}" class="text-white text-decoration-none">
+                                                {{ $technology->name }}
+                                            </a>
                                         </span>
                                     @elseif ($technology->name === 'Laravel')
                                         <span class="badge rounded-pill text-bg-info">
-                                            {{ $technology->name }}
+                                            <a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}" class="text-black text-decoration-none">
+                                                {{ $technology->name }}
+                                            </a>
                                         </span>
                                     @endif
                                 @endforeach
