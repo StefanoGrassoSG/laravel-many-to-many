@@ -7,6 +7,8 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
+
         <!-- Scripts -->
         @vite('resources/js/app.js')
     </head>
