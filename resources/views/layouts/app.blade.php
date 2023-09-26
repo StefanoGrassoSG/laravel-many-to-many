@@ -95,11 +95,5 @@
                 </main>
             </section>
         </div>
-
-        <main class="py-4">
-            <div class="container">
-                @yield('main-content')
-            </div>
-        </main>
     </body>
 </html>
