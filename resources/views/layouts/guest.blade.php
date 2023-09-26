@@ -12,9 +12,15 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-primary">
                 <div class="container">
-                    <a class="navbar-brand" href="{{ route('home') }}">Home</a>
+                    <a href="{{ route('home') }}"
+                        @if (request()->routeIs('home'))
+                            class="navbar-brand text-white"
+                        @else
+                            class="navbar-brand text-black"
+                        @endif
+                    >Home</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -22,7 +28,13 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             @auth
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+                                    <a class="nav-link" href="{{ route('admin.dashboard') }}"
+                                    @if(request()->routeIs('admin.dashboard'))
+                                        class="nav-link text-danger fw-bold"
+                                    @else
+                                        class="nav-link text-white"
+                                    @endif
+                                    >Admin Dashboard</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">See My Projects</a>

@@ -12,25 +12,59 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-primary">
                 <div class="container">
-                    <a class="navbar-brand" href="{{ route('home') }}">Home</a>
+                    <a href="{{ route('home') }}"
+                        @if (request()->routeIs('home'))
+                            class="navbar-brand text-white"
+                        @else
+                            class="navbar-brand text-black"
+                        @endif
+                    >Home</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+                                <a href="{{ route('admin.dashboard') }}"
+                                    @if(request()->routeIs('admin.dashboard'))
+                                        class="nav-link text-white fw-bold"
+                                    @else
+                                        class="nav-link"
+                                    @endif
+                                    >Admin Dashboard
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.projects.index') }}">Go to all Projects</a>
+                                <a href="{{ route('admin.projects.index') }}"
+                                    @if(request()->routeIs('admin.projects.index'))
+                                        class="nav-link text-white fw-bold"
+                                    @else
+                                        class="nav-link"
+                                    @endif
+                                    >Go to all projects
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.types.index') }}">Go to all types</a>
+                                <a href="{{ route('admin.types.index') }}"
+                                    @if(request()->routeIs('admin.types.index'))
+                                        class="nav-link text-white fw-bold"
+                                    @else
+                                        class="nav-link"
+                                    @endif
+                                    >Go to all types
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.technologies.index') }}">Go to all technologies</a>
+                                <a href="{{ route('admin.technologies.index') }}"
+                                    @if(request()->routeIs('admin.technologies.index'))
+                                        class="nav-link text-white fw-bold"
+                                    @else
+                                        class="nav-link"
+                                    @endif
+                                    >Go to all technologies
+                                </a>
                             </li>
                         </ul>
                         <form method="POST" action="{{ route('logout') }}">
